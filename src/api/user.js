@@ -1,24 +1,24 @@
-import request from '@/utils/request'
-
+import request from "@/utils/request";
+// 请求登录的接口
 export function login(data) {
   return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
-  })
+    url: "/admin/acl/index/login",
+    method: "post",
+    data,
+  });
 }
-
+// 携带token获取用户信息的接口
 export function getInfo(token) {
   return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
+    url: "/admin/acl/index/info",
+    method: "get",
+    params: { token },
+  });
 }
-
+// 退出登录的接口
 export function logout() {
   return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
-  })
+    url: "/admin/acl/index/logout",
+    method: "post",
+  });
 }
