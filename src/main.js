@@ -36,6 +36,9 @@ Vue.use(ElementUI, { locale });
 Vue.config.productionTip = false;
 // 统一在入口这里引入product的所有api接口
 import API from "@/api";
+// 引入全局组件三级联动
+import CategorySelect from "@/components/CategorySelect";
+Vue.component(CategorySelect.name, CategorySelect);
 new Vue({
   el: "#app",
   router,
