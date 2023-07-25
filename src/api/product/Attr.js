@@ -36,3 +36,10 @@ export const reqAddOrUpdateInfo = (data) => {
     data,
   });
 };
+// 删除attr
+export const reqDeleteAttr = (attrId) => {
+  return request({
+    url: `/admin/product/deleteAttr/${attrId}`,
+    method: "delete",
+  });
+};

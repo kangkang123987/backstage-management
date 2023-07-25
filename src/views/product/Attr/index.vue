@@ -52,7 +52,11 @@
                 @click="updateAttr(row)"
                 >修改</el-button
               >
-              <el-button type="danger" icon="el-icon-delete" size="small"
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                size="small"
+                @click="deleteAttr(row)"
                 >删除</el-button
               >
             </template>
@@ -263,6 +267,13 @@ export default {
         this.isShowTable = true;
       } else {
         console.log(error);
+      }
+    },
+    async deleteAttr(row) {
+      let result = await this.$API.Attr.reqDeleteAttr(row.id);
+      if (result.code == 200) {
+        this.$message({ type: "success", message: "删除成功" });
+        this.getInfoList();
       }
     },
   },
