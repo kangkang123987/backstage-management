@@ -46,6 +46,7 @@ new Vue({
   // 创建实例前将api的所有接口放在vue原型上，用$API发请求
   beforeCreate() {
     Vue.prototype.$API = API;
+    Vue.prototype.$bus = this;
   },
   render: (h) => h(App),
 });
