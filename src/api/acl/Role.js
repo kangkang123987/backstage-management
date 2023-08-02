@@ -40,3 +40,30 @@ export const updateRole = (data) => {
     data,
   });
 };
+
+// 搜索角色信息
+export const reqSearchRole = (data) => {
+  return request({
+    url: `/admin/acl/role/${data.page}/${data.limit}`,
+    method: "get",
+    params: data,
+  });
+};
+
+// 根据角色获取所有菜单
+export const reqMenuByRoleId = (roleId) => {
+  return request({
+    url: `/admin/acl/permission/toAssign/${roleId}`,
+    method: "get",
+  });
+};
+
+// 给角色分配权限
+// POST / admin / acl / permission / doAssign;
+export const reqAssignPermission = (data) => {
+  return request({
+    url: "/admin/acl/permission/doAssign",
+    method: "post",
+    data,
+  });
+};

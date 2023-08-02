@@ -2,11 +2,13 @@
   <div>
     <el-form inline>
       <el-form-item label="">
-        <el-input placeholder="用户名" />
+        <el-input placeholder="用户名" v-model="item.username" />
       </el-form-item>
       <el-form-item label="">
-        <el-button type="primary" icon="el-icon-search">搜索</el-button>
-        <el-button> 清空</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="SearchUser"
+          >搜索</el-button
+        >
+        <el-button @click="clearSearch"> 清空</el-button>
       </el-form-item>
     </el-form>
     <el-button type="primary" icon="el-icon-plus" @click="openAddDiaLog"
@@ -202,6 +204,22 @@ export default {
     // 改变页码后重新渲染列表数据
     handleCurrentChange(pager = 1) {
       this.page = pager;
+      this.getUserList();
+    },
+    // 搜索用户信息
+    async SearchUser() {
+      let searchObj = {};
+      searchObj.page = this.page;
+      searchObj.limit = this.limit;
+      searchObj.username = this.item.username;
+      let result = await this.$API.User.reqSearchUser(searchObj);
+      if (result.code == 20000) {
+        this.items = result.data.items;
+      }
+    },
+    // 清空搜索信息
+    clearSearch() {
+      this.item.username = "";
       this.getUserList();
     },
     // 删除用户数据

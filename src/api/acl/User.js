@@ -68,3 +68,12 @@ export const reqAssignRole = (userId, roleId) => {
     },
   });
 };
+
+// 搜索用户信息
+export const reqSearchUser = (data) => {
+  return request({
+    url: `/admin/acl/user/${data.page}/${data.limit}`,
+    method: "get",
+    params: data,
+  });
+};
